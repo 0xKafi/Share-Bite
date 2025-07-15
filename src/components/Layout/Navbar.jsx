@@ -18,13 +18,13 @@ const Navbar = () => {
                 </div>
                 {/* links*/}
                 <div className='space-x-8 hidden lg:block'>
-                    <NavLink className={({isActive})=> isActive ? "font-medium text-orange-500 pb-1 border-b-1 border-orange-500": ""} to='/'>Home</NavLink>
-                    <NavLink className={({isActive})=> isActive ? "font-medium text-orange-500 pb-1 border-b-1 border-orange-500": ""} to='/available-foods'>Available Foods</NavLink>
+                    <NavLink className={({isActive})=> isActive ? "font-medium text-orange-500": ""} to='/'>Home</NavLink>
+                    <NavLink className={({isActive})=> isActive ? "font-medium text-orange-500": ""} to='/available-foods'>Available Foods</NavLink>
 
                     <>
-                        <NavLink className={({isActive})=> isActive ? "font-medium text-orange-500 pb-1 border-b-1 border-orange-500": ""} to="/add-food">Add Food</NavLink>
-                        <NavLink className={({isActive})=> isActive ? "font-medium text-orange-500 pb-1 border-b-1 border-orange-500": ""} to="/manage-my-foods">Manage My Food</NavLink>
-                        <NavLink className={({isActive})=> isActive ? "font-medium text-orange-500 pb-1 border-b-1 border-orange-500": ""} to="/my-food-request">My Food Request</NavLink>
+                        <NavLink className={({isActive})=> isActive ? "font-medium text-orange-500": ""} to="/add-food">Add Food</NavLink>
+                        <NavLink className={({isActive})=> isActive ? "font-medium text-orange-500": ""} to="/manage-my-foods">Manage My Food</NavLink>
+                        <NavLink className={({isActive})=> isActive ? "font-medium text-orange-500": ""} to="/my-food-request">My Food Request</NavLink>
                     </>
                 </div>
 
@@ -39,12 +39,12 @@ const Navbar = () => {
                         <DropdownMenu>
                         <DropdownMenuTrigger><Menu></Menu></DropdownMenuTrigger>
                         <DropdownMenuContent>
-                            <DropdownMenuItem><NavLink className={({isActive})=> isActive ? "font-medium text-orange-500 pb-1 border-b-1 border-orange-500": ""} to="/">Home</NavLink></DropdownMenuItem>
-                            <DropdownMenuItem><NavLink className={({isActive})=> isActive ? "font-medium text-orange-500 pb-1 border-b-1 border-orange-500": ""} to="/available-foods">Available Foods</NavLink></DropdownMenuItem>
+                            <DropdownMenuItem><NavLink className={({isActive})=> isActive ? "font-medium text-orange-500": ""} to="/">Home</NavLink></DropdownMenuItem>
+                            <DropdownMenuItem><NavLink className={({isActive})=> isActive ? "font-medium text-orange-500": ""} to="/available-foods">Available Foods</NavLink></DropdownMenuItem>
                             <>
-                            <DropdownMenuItem><NavLink className={({isActive})=> isActive ? "font-medium text-orange-500 pb-1 border-b-1 border-orange-500": ""} to="/add-food">Add Food</NavLink></DropdownMenuItem>
-                            <DropdownMenuItem><NavLink className={({isActive})=> isActive ? "font-medium text-orange-500 pb-1 border-b-1 border-orange-500": ""} to="/manage-my-foods">Manage My Food</NavLink></DropdownMenuItem>
-                            <DropdownMenuItem><NavLink className={({isActive})=> isActive ? "font-medium text-orange-500 pb-1 border-b-1 border-orange-500": ""} to="/my-food-request">My Food Request</NavLink></DropdownMenuItem>
+                            <DropdownMenuItem><NavLink className={({isActive})=> isActive ? "font-medium text-orange-500": ""} to="/add-food">Add Food</NavLink></DropdownMenuItem>
+                            <DropdownMenuItem><NavLink className={({isActive})=> isActive ? "font-medium text-orange-500": ""} to="/manage-my-foods">Manage My Food</NavLink></DropdownMenuItem>
+                            <DropdownMenuItem><NavLink className={({isActive})=> isActive ? "font-medium text-orange-500": ""} to="/my-food-request">My Food Request</NavLink></DropdownMenuItem>
                             </>
                         </DropdownMenuContent>
                         </DropdownMenu>
