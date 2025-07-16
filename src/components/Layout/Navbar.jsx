@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -54,8 +54,12 @@ const Navbar = () => {
 
                 {/* login signup */}
                 <div className='space-x-2 hidden lg:block'>
+                    <Link to='/login'>
                     <Button variant="outline">Login</Button>
+                    </Link>
+                    <Link to='/signup'>
                     <Button className="bg-orange-500 hover:bg-orange-400"><MoveRight></MoveRight> Sign Up</Button>
+                    </Link>
                 </div>
             </div>
         </div>
