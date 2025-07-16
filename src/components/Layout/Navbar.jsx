@@ -101,7 +101,7 @@ const Navbar = () => {
                         <Button variant="outline">Login</Button>
                         </Link>
                         <Link to='/signup'>
-                        <Button className="bg-orange-500 hover:bg-orange-400"><MoveRight></MoveRight> Sign Up</Button>
+                        <Button className="bg-orange-500 hover:bg-orange-400">Sign Up</Button>
                         </Link>
                     </div>
                     </>
