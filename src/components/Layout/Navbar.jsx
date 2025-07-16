@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router';
 import { Button } from "@/components/ui/button"
 import {
@@ -8,8 +8,18 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Menu, MoveLeft, MoveRight } from 'lucide-react';
+import AuthContext from '../Auth/AuthContext';
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+
 
 const Navbar = () => {
+    const {user, signOutUser} = useContext(AuthContext);
+
+
+    const handleSignOut=()=>{
+        signOutUser()
+    }
+
     return (
         <div className='border border-base-100 mt-5 rounded-xl w-7/8 mx-auto'>
             <div className='mx-auto lg:p-4 p-5 flex items-center justify-between'>
@@ -29,15 +39,23 @@ const Navbar = () => {
                 </div>
 
                 {/* profile & menu */}
-                <div className='lg:hidden'>
+                <div className='lg:hidden flex items-center space-x-2'>
                     {/* profile icon */}
                     <div>
-
+                        {
+                            user? 
+                            <>
+                            <Avatar>
+                                <AvatarImage src={user.photoURL}/>
+                                    <AvatarFallback>CN</AvatarFallback>
+                                </Avatar>
+                            </>:""
+                        }
                     </div>
                     {/* menubar */}
-                    <div>
+                    <div className='mt-1'>
                         <DropdownMenu>
-                        <DropdownMenuTrigger><Menu></Menu></DropdownMenuTrigger>
+                        <DropdownMenuTrigger><Menu size={35}></Menu></DropdownMenuTrigger>
                         <DropdownMenuContent>
                             <DropdownMenuItem><NavLink className={({isActive})=> isActive ? "font-medium text-orange-500": ""} to="/">Home</NavLink></DropdownMenuItem>
                             <DropdownMenuItem><NavLink className={({isActive})=> isActive ? "font-medium text-orange-500": ""} to="/available-foods">Available Foods</NavLink></DropdownMenuItem>
@@ -45,6 +63,19 @@ const Navbar = () => {
                             <DropdownMenuItem><NavLink className={({isActive})=> isActive ? "font-medium text-orange-500": ""} to="/add-food">Add Food</NavLink></DropdownMenuItem>
                             <DropdownMenuItem><NavLink className={({isActive})=> isActive ? "font-medium text-orange-500": ""} to="/manage-my-foods">Manage My Food</NavLink></DropdownMenuItem>
                             <DropdownMenuItem><NavLink className={({isActive})=> isActive ? "font-medium text-orange-500": ""} to="/my-food-request">My Food Request</NavLink></DropdownMenuItem>
+                            {
+                                user?
+                                <>
+                                    <DropdownMenuItem><Link to='/login'>
+                        <Button variant="outline">Login</Button>
+                        </Link></DropdownMenuItem>
+                                    <DropdownMenuItem>
+                                                                <Link to='/signup'>
+                        <Button className="bg-orange-500 hover:bg-orange-400"><MoveRight></MoveRight> Sign Up</Button>
+                        </Link>
+                                    </DropdownMenuItem>
+                                </>: ""
+                            }
                             </>
                         </DropdownMenuContent>
                         </DropdownMenu>
@@ -53,13 +84,28 @@ const Navbar = () => {
 
 
                 {/* login signup */}
-                <div className='space-x-2 hidden lg:block'>
-                    <Link to='/login'>
-                    <Button variant="outline">Login</Button>
-                    </Link>
-                    <Link to='/signup'>
-                    <Button className="bg-orange-500 hover:bg-orange-400"><MoveRight></MoveRight> Sign Up</Button>
-                    </Link>
+                <div className='hidden lg:block'>
+                {
+                    user? 
+                    <div className='flex space-x-4 items-center'>
+                        <Link to='/'>
+                            <Button onClick={handleSignOut} className="bg-orange-500 hover:bg-orange-400">Sign Out</Button>
+                        </Link>
+                        <Avatar>
+                            <AvatarImage src={user.photoURL}/>
+                        </Avatar>
+                    </div>:
+                    <>
+                        <div className='space-x-2 hidden lg:block'>
+                        <Link to='/login'>
+                        <Button variant="outline">Login</Button>
+                        </Link>
+                        <Link to='/signup'>
+                        <Button className="bg-orange-500 hover:bg-orange-400"><MoveRight></MoveRight> Sign Up</Button>
+                        </Link>
+                    </div>
+                    </>
+                }
                 </div>
             </div>
         </div>
