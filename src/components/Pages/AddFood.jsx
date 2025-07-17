@@ -4,6 +4,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import AuthContext from '../Auth/AuthContext';
+import axios from 'axios';
 
 const AddFood = () => {
     const {user} = useContext(AuthContext)
@@ -16,9 +17,16 @@ const AddFood = () => {
         dataObj.email = user.email
         dataObj.status = "available"
 
-
         console.log(dataObj)
-        // e.target.reset()
+        axios.post('http://localhost:3000/foods', dataObj)
+        .then(res => {
+          console.log(res.data);
+        })
+        .catch(error =>{
+          console.log(error)
+        })
+
+        e.target.reset()
     }
     return (
         <div className='w-7/8 mx-auto h-screen flex justify-center items-center'>
