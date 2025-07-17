@@ -26,7 +26,7 @@ const AddFood = () => {
           console.log(error)
         })
 
-        e.target.reset()
+        // e.target.reset()
     }
     return (
         <div className='w-7/8 mx-auto h-screen flex justify-center items-center'>
@@ -34,15 +34,15 @@ const AddFood = () => {
                 <div className='max-w-lg p-5 shadow rounded-lg mx-auto'>
                   <div className="grid gap-2 mb-4">
                     <Label htmlFor="text">Food Name</Label>
-                    <Input name="text" type="text" placeholder="Enter Food Name" required />
+                    <Input name="title" type="text" placeholder="Enter Food Name" required />
                   </div>
                     <div className="grid gap-2 mb-4">
                     <Label htmlFor="text">Food Image</Label>
-                    <Input name="url" type="url" placeholder="Enter Food Name" required />
+                    <Input name="image" type="url" placeholder="Food Image URL" required />
                   </div>
                     <div className="grid gap-2 mb-4">
                     <Label htmlFor="text">Food Quantity</Label>
-                    <Input name="quantity" type="number" placeholder="Enter Food Name" required />
+                    <Input name="quantity" type="number" placeholder="Food Quantity" required />
                   </div>
                   <div className="grid gap-2 mb-4">
                     <Label htmlFor="location">Pickup Location</Label>
