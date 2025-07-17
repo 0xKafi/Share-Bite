@@ -9,6 +9,7 @@ import ManageMyFoods from '../components/Pages/ManageMyFoods';
 import AvailableFoods from '../components/Pages/AvailableFoods';
 import Login from '../components/AuthPage/Login';
 import SignUp from '../components/AuthPage/SignUp';
+import FoodCardDetails from '../components/FoodCard/FoodCardDetails';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,11 @@ const router = createBrowserRouter([
           path: '/available-foods',
           Component: AvailableFoods,
           loader: ()=> fetch('http://localhost:3000/foods')
+        },
+        {
+          path: 'foods/details/:id',
+          Component: FoodCardDetails,
+          loader: ({params})=> fetch(`http://localhost:3000/foods/details/${params.id}`)
         },
         {
           path: '/login',

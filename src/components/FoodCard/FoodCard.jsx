@@ -2,14 +2,15 @@ import React from 'react';
 import {Button} from "@/components/ui/button"
 import {Package, Calendar, MapPin, User} from 'lucide-react';
 import { Badge } from "@/components/ui/badge"
+import { useNavigate } from 'react-router';
 
 const FoodCard = ({foods}) => {
-  console.log(foods);
+  const navigate = useNavigate()
   const date = foods.date.split('T')[0]
   const time = foods.date.split('T')[1]
-  console.log(date)
+  
     return (
-        <div className='relative w-sm mx-auto hover:shadow-sm rounded-md h-100 border-base-100 border-2'>
+        <div className='relative  lg:w-sm mx-auto hover:shadow-sm rounded-md h-100 border-base-100 border-2'>
           <Badge className='absolute bg-green-500 top-1 left-1'>Avaiable</Badge>
           <div className='h-50'>
             <img className='w-full h-full rounded-t-md object-cover' src={foods.image} alt="foodimage" />
@@ -32,7 +33,7 @@ const FoodCard = ({foods}) => {
                 <span>{foods.location}</span>
               </div>
             </div>
-          <Button className='mt-2'>View Details</Button>
+          <Button onClick={()=> navigate(`/foods/details/${foods._id}`)} className='mt-2'>View Details</Button>
           </div>
         </div>
     );

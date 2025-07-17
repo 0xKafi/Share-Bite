@@ -4,7 +4,7 @@ import FoodCard from '../FoodCard/FoodCard';
 import { Grid2x2, Grid3x3 } from 'lucide-react';
 
 const AvailableFoods = () => {
-    const [col, setCol] = useState(3)
+    const [col, setCol] = useState(true)
     const availableFoods = useLoaderData();
 
     return (
@@ -14,15 +14,15 @@ const AvailableFoods = () => {
 
                 </div>
                 <div className='flex bg-gray-300 rounded-sm space-x-2 border-2 border-gray-300'>
-                    <div className={`${col === 2? 'bg-white rounded-sm': ''} p-1`}>
-                        <Grid2x2 color='orange' onClick={()=> setCol(2)}  />
+                    <div className={`${col? '': 'bg-white rounded-sm'} p-1`}>
+                        <Grid2x2 color='orange' onClick={()=> setCol(false)}  />
                     </div>
-                    <div className={`${col === 3? 'bg-white rounded-sm': ''} p-1 `}>
-                        <Grid3x3 color='orange' onClick={()=> setCol(3)}  />
+                    <div className={`${col? 'bg-white rounded-sm': ''} p-1 `}>
+                        <Grid3x3 color='orange' onClick={()=> setCol(true)}  />
                     </div>
                 </div>
             </div>
-            <div className={`grid grid-cols-${col} gap-10`}>
+            <div className={`grid ${col? "lg:grid-cols-3" : "lg:grid-cols-2"} grid-cols-1 gap-10`}>
                 {
                     availableFoods?.filter(food => food.status === 'available')
                     .map(food => (
