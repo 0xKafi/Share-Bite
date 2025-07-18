@@ -12,11 +12,13 @@ import SignUp from '../components/AuthPage/SignUp';
 import FoodCardDetails from '../components/FoodCard/FoodCardDetails';
 import MyFoodRequest from '../components/Pages/MyFoodRequest';
 import Private from '../components/AuthPage/Private';
+import Error from '../components/Layout/Error';
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: App,
+    errorElement: <Error></Error>,
     children:[
         {
             index: true,
