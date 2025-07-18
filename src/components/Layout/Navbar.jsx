@@ -13,8 +13,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 
 const Navbar = () => {
-    const {user, signOutUser} = useContext(AuthContext);
-
+    const {user, signOutUser, loading} = useContext(AuthContext);
 
     const handleSignOut=()=>{
         signOutUser()
@@ -30,12 +29,14 @@ const Navbar = () => {
                 <div className='space-x-8 hidden lg:block'>
                     <NavLink className={({isActive})=> isActive ? "font-medium text-orange-500": ""} to='/'>Home</NavLink>
                     <NavLink className={({isActive})=> isActive ? "font-medium text-orange-500": ""} to='/available-foods'>Available Foods</NavLink>
-
+                    {
+                        user? 
                     <>
                         <NavLink className={({isActive})=> isActive ? "font-medium text-orange-500": ""} to="/add-food">Add Food</NavLink>
                         <NavLink className={({isActive})=> isActive ? "font-medium text-orange-500": ""} to="/manage-my-foods">Manage My Food</NavLink>
                         <NavLink className={({isActive})=> isActive ? "font-medium text-orange-500": ""} to="/my-food-request">My Food Request</NavLink>
-                    </>
+                    </>: ""
+                    }
                 </div>
 
                 {/* profile & menu */}
@@ -43,12 +44,12 @@ const Navbar = () => {
                     {/* profile icon */}
                     <div>
                         {
+                            loading? <p>loading....</p>:
                             user? 
                             <>
-                            <Avatar>
-                                <AvatarImage src={user.photoURL}/>
-                                    <AvatarFallback>CN</AvatarFallback>
-                                </Avatar>
+                        <Avatar>
+                            <img src={user.photoURL}/>
+                        </Avatar>
                             </>:""
                         }
                     </div>
@@ -65,16 +66,16 @@ const Navbar = () => {
                             <DropdownMenuItem><NavLink className={({isActive})=> isActive ? "font-medium text-orange-500": ""} to="/my-food-request">My Food Request</NavLink></DropdownMenuItem>
                             {
                                 user?
-                                <>
+                                "":<>
                                     <DropdownMenuItem><Link to='/login'>
                         <Button variant="outline">Login</Button>
                         </Link></DropdownMenuItem>
                                     <DropdownMenuItem>
-                                                                <Link to='/signup'>
+                                    <Link to='/signup'>
                         <Button className="bg-orange-500 hover:bg-orange-400"><MoveRight></MoveRight> Sign Up</Button>
                         </Link>
                                     </DropdownMenuItem>
-                                </>: ""
+                                </>
                             }
                             </>
                         </DropdownMenuContent>
@@ -92,7 +93,7 @@ const Navbar = () => {
                             <Button onClick={handleSignOut} className="bg-orange-500 hover:bg-orange-400">Sign Out</Button>
                         </Link>
                         <Avatar>
-                            <AvatarImage src={user.photoURL}/>
+                            <img src={user.photoURL}/>
                         </Avatar>
                     </div>:
                     <>

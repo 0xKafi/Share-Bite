@@ -5,6 +5,7 @@ import auth from '../../lib/firebase.config';
 
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true)
 
     const createUser = (email, password) =>{
         return createUserWithEmailAndPassword(auth, email, password)
@@ -30,7 +31,7 @@ const AuthProvider = ({children}) => {
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth, (currentUser)=>{
             setUser(currentUser)
-            console.log(currentUser)
+            setLoading(false)
         })
 
         return ()=>{
@@ -46,6 +47,8 @@ const AuthProvider = ({children}) => {
         googleSignIn,
         signOutUser,
         updateUserProfile,
+        loading,
+        setLoading
     }
 
     return (
