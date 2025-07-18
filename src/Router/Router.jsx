@@ -10,6 +10,7 @@ import AvailableFoods from '../components/Pages/AvailableFoods';
 import Login from '../components/AuthPage/Login';
 import SignUp from '../components/AuthPage/SignUp';
 import FoodCardDetails from '../components/FoodCard/FoodCardDetails';
+import MyFoodRequest from '../components/Pages/MyFoodRequest';
 
 const router = createBrowserRouter([
   {
@@ -29,8 +30,9 @@ const router = createBrowserRouter([
           Component: ManageMyFoods
         },
         {
-          path: '/my-food-request',
-          Component: ManageMyFoods
+          path: '/my-food-request/:email',
+          Component: MyFoodRequest,
+
         },
         {
           path: '/available-foods',

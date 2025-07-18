@@ -1,30 +1,56 @@
-import React from 'react';import {Button} from "@/components/ui/button"
+import React, { useContext } from 'react';import {Button} from "@/components/ui/button"
 import {Package, Calendar, MapPin, User2} from 'lucide-react';
 import { Badge } from "@/components/ui/badge"
 import { useNavigate } from 'react-router';
 import { useLoaderData } from 'react-router';
 import axios from 'axios';
+import AuthContext from '../Auth/AuthContext';
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea";
+
 
 const FoodCardDetails = () => {
+    const {user} = useContext(AuthContext)
     const navigate = useNavigate()
     const foods = useLoaderData();
     console.log(foods)
 
     const date = foods.date.split('T')[0]
     const time = foods.date.split('T')[1]
-    const obj = {
-        "status": "requested"
-    }
-    const handleFoodStatus=()=>{
+    const now = new Date();
 
-        axios.patch(`http://localhost:3000/foods/details/${foods._id}`, obj)
-        .then(response => {
-            console.log('Resource updated successfully:', response.data);
-        })
-        .catch(error => {
-            console.error('Error updating resource:', error);
-        });
-        navigate('/my-food-request')
+    const dhakaTime = new Date(
+      now.toLocaleString("en-US", { timeZone: "Asia/Dhaka" })
+    );
+
+    const dateTime = dhakaTime.toISOString().slice(0, 16);
+
+    const handleSubmit=(e)=>{
+      const obj = {
+          "status": "requested",
+          "req_email" : user.email,
+          "req_time" : e.target.req_date.value
+      }
+      console.log(obj)
+      axios.patch(`http://localhost:3000/foods/details/${foods._id}`, obj)
+      .then(response => {
+          console.log('Resource updated successfully:', response.data);
+      })
+      .catch(error => {
+          console.error('Error updating resource:', error);
+      });
+      navigate('/my-food-request')
     }
 
     return (
@@ -50,13 +76,72 @@ const FoodCardDetails = () => {
                 <MapPin className="h-4 w-4" />
                 <span className='text-lg text-black/70'>Location: {foods.location}</span>
               </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 mb-4">
                 <User2 className="h-4 w-4" />
-                <span className='text-lg text-black/70'>Posted By: {foods.name}</span>
+                <span className='text-lg text-black/70'>Donner Name: {foods.name}</span>
               </div>
             </div>
-          <Button onClick={()=>
-            handleFoodStatus()} className='mt-4 bg-orange-500 hover:bg-orange-400'>Request Here</Button>
+
+            <Dialog>
+              <form onSubmit={handleSubmit}>
+                <DialogTrigger asChild>
+                  <Button>Request Here</Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[425px]">
+                  <DialogHeader>
+                    <DialogTitle>Request Food Data</DialogTitle>
+                  </DialogHeader>
+                  <div className='grid grid-cols-1 lg:grid-cols-2 gap-2'>
+                  <div className="grid gap-2">
+                    <Label htmlFor="text">Food Name</Label>
+                    <Input name="title" type="text" placeholder="Enter Food Name" value={foods.title} disabled />
+                  </div>
+                    <div className="grid gap-2">
+                    <Label htmlFor="text">Food Image</Label>
+                    <Input name="image" type="url" placeholder="Food Image URL" value={foods.image} disabled />
+                  </div>
+                    <div className="grid gap-2">
+                    <Label htmlFor="number">Food ID</Label>
+                    <Input name="id"  value={foods._id} disabled />
+                  </div>
+                  <div className="grid gap-2">
+                    <Label htmlFor="location">Pickup Location</Label>
+                    <Input name="location" type="text" placeholder="Enter Pickup Location" value={foods.location} disabled />
+                  </div>
+                  <div className="grid gap-2">
+                    <Label htmlFor="data">Request Date/Time</Label>
+                    <Input name="req_date" type="datetime-local" value={dateTime} disabled />
+                  </div>
+                    <div className="grid gap-2">
+                    <Label htmlFor="data">Expired Date/Time</Label>
+                    <Input name="date" type="datetime-local" value={foods.date} disabled />
+                  </div>
+                    <div className="grid gap-2">
+                    <Label htmlFor="text">Donner Name</Label>
+                    <Input name="title" type="text" placeholder="Enter Food Name" value={foods.name} disabled />
+                  </div>
+                    <div className="grid gap-2">
+                    <Label htmlFor="text">Donner Email</Label>
+                    <Input name="title" type="text" placeholder="Enter Food Name" value={foods.email} disabled />
+                  </div>
+                  <div className="grid gap-2">
+                    <Label htmlFor="text">Your Email</Label>
+                    <Input name="title" type="text" placeholder="Enter Food Name" value={user.email} disabled />
+                  </div>
+                    <div className="grid gap-2">
+                    <Label htmlFor="notes">Additional Notes</Label>
+                    <Textarea name="notes" type="text" defaultvalue={foods.notes} />
+                  </div>
+                  </div>
+                  <DialogFooter>
+                    <DialogClose asChild>
+                      <Button variant="outline">Cancel</Button>
+                    </DialogClose>
+                    <Button type="submit">Request</Button>
+                  </DialogFooter>
+                </DialogContent>
+              </form>
+            </Dialog>
           </div>
         </div>
     );

@@ -26,7 +26,7 @@ const AddFood = () => {
           console.log(error)
         })
 
-        // e.target.reset()
+        e.target.reset()
     }
     return (
         <div className='w-7/8 mx-auto h-screen flex justify-center items-center'>
