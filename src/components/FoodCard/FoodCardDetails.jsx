@@ -37,6 +37,7 @@ const FoodCardDetails = () => {
     const dateTime = dhakaTime.toISOString().slice(0, 16);
 
     const handleSubmit=(e)=>{
+      e.preventDefault()
       const obj = {
           "status": "requested",
           "req_email" : user.email,
@@ -83,11 +84,11 @@ const FoodCardDetails = () => {
             </div>
 
             <Dialog>
-              <form onSubmit={handleSubmit}>
                 <DialogTrigger asChild>
                   <Button>Request Here</Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[425px]">
+              <form onSubmit={handleSubmit}>
                   <DialogHeader>
                     <DialogTitle>Request Food Data</DialogTitle>
                   </DialogHeader>
@@ -130,7 +131,7 @@ const FoodCardDetails = () => {
                   </div>
                     <div className="grid gap-2">
                     <Label htmlFor="notes">Additional Notes</Label>
-                    <Textarea name="notes" type="text" defaultvalue={foods.notes} />
+                    <Textarea name="notes" type="text" defaultValue={foods.notes} />
                   </div>
                   </div>
                   <DialogFooter>
@@ -139,8 +140,8 @@ const FoodCardDetails = () => {
                     </DialogClose>
                     <Button type="submit">Request</Button>
                   </DialogFooter>
+                  </form>
                 </DialogContent>
-              </form>
             </Dialog>
           </div>
         </div>
