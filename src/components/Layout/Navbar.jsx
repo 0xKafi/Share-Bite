@@ -44,11 +44,16 @@ const Navbar = () => {
                     {/* profile icon */}
                     <div>
                         {
-                            loading? <p>loading....</p>:
+                            loading?<>
+                                  <Avatar>
+                                    <AvatarFallback>A</AvatarFallback>
+                                </Avatar>
+                            </> :
                             user? 
                             <>
                         <Avatar>
-                            <img src={user.photoURL}/>
+                            <AvatarImage src={user.photoURL}/>
+                            <AvatarFallback>ER</AvatarFallback>
                         </Avatar>
                             </>:""
                         }
@@ -66,7 +71,8 @@ const Navbar = () => {
                             <DropdownMenuItem><NavLink className={({isActive})=> isActive ? "font-medium text-orange-500": ""} to="/my-food-request">My Food Request</NavLink></DropdownMenuItem>
                             {
                                 user?
-                                "":<>
+                            <Button onClick={handleSignOut} className="bg-orange-500 hover:bg-orange-400 py-2 ml-2">Sign Out</Button>
+                                :<>
                                     <DropdownMenuItem><Link to='/login'>
                         <Button variant="outline">Login</Button>
                         </Link></DropdownMenuItem>
