@@ -17,14 +17,18 @@ const MyFoodRequest = () => {
     const [data, setData] = useState(null)
     
     useEffect(()=>{
-        axios.get(`http://localhost:3000/my-food-request?email=${user.email}`)
+        axios.get(`http://localhost:3000/my-food-request`, {
+            headers:{
+                Authorization: `Bearer ${user?.accessToken}`
+            }
+        })
         .then(res => {
             setData(res.data)
         })
         .catch(error => {
             console.error('Error fetching data:', error);
         });
-    }, [user.email])
+    }, [user])
 
     return (
         <div className='w-7/8 mx-auto mt-10'>

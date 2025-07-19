@@ -49,8 +49,8 @@ const AddFood = () => {
                     <Input name="location" type="text" placeholder="Enter Pickup Location" required />
                   </div>
                     <div className="grid gap-2 mb-4">
-                    <Label htmlFor="data">Expired Date/Time</Label>
-                    <Input name="date" type="datetime-local" required />
+                    <Label htmlFor="date">Expired Date</Label>
+                    <Input name="date" type="date" required />
                   </div>
                     <div className="grid gap-2 mb-4">
                     <Label htmlFor="notes">Additional Notes</Label>

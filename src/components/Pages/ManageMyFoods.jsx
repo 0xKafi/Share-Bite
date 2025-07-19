@@ -27,16 +27,20 @@ import { Textarea } from "@/components/ui/textarea";
 const ManageMyFoods = () => {
     const {user} = useContext(AuthContext)
     const [data, setData] = useState(null)
-    
+
     useEffect(()=>{
-        axios.get(`http://localhost:3000/manage-my-food?email=${user.email}`)
+        axios.get(`http://localhost:3000/manage-my-food`,{
+            headers:{
+                Authorization: `Bearer ${user?.accessToken}`
+            }
+        })
         .then(res => {
             setData(res.data)
         })
         .catch(error => {
             console.error('Error fetching data:', error);
         });
-    }, [user.email])
+    }, [user])
 
     const handleDelete=(id)=>{
         axios.delete(`http://localhost:3000/manage-my-food/${id}`)
@@ -72,6 +76,7 @@ const ManageMyFoods = () => {
                 <TableHead >Food Name</TableHead>
                 <TableHead >Quantity</TableHead>
                 <TableHead >Expire Date</TableHead>
+                <TableHead >Status</TableHead>
                 <TableHead ></TableHead>
                 </TableRow>
             </TableHeader>
@@ -83,6 +88,7 @@ const ManageMyFoods = () => {
                             <TableCell>{data.title}</TableCell>
                             <TableCell>{data.quantity}</TableCell>
                             <TableCell>{data.date}</TableCell>
+                            <TableCell>{data.status}</TableCell>
                             <TableCell className='flex space-x-2'>
                               <div className='hover:bg-gray-900 hover:text-white p-2 w-8 rounded-sm'>
                             <Dialog>
@@ -112,8 +118,8 @@ const ManageMyFoods = () => {
                                     <Input name="location" type="text" placeholder="Enter Pickup Location" defaultValue={data.location} />
                                 </div>
                                     <div className="grid gap-2">
-                                    <Label htmlFor="data">Expired Date/Time</Label>
-                                    <Input name="date" type="datetime-local" defaultValue={data.date}  />
+                                    <Label htmlFor="date">Expired Date</Label>
+                                    <Input name="date" type="date" defaultValue={data.date}  />
                                 </div>
                                     <div className="grid gap-2">
                                     <Label htmlFor="notes">Additional Notes</Label>
@@ -124,7 +130,9 @@ const ManageMyFoods = () => {
                                     <DialogClose asChild>
                                     <Button variant="outline">Cancel</Button>
                                     </DialogClose>
+                                    <DialogClose asChild>
                                     <Button type="submit">Save Changes</Button>
+                                    </DialogClose>
                                 </DialogFooter>
                                 </form>
                                 </DialogContent>

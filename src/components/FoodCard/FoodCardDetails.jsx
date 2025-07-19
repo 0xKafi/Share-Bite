@@ -25,16 +25,7 @@ const FoodCardDetails = () => {
     const navigate = useNavigate()
     const foods = useLoaderData();
     console.log(foods)
-
-    const date = foods.date.split('T')[0]
-    const time = foods.date.split('T')[1]
-    const now = new Date();
-
-    const dhakaTime = new Date(
-      now.toLocaleString("en-US", { timeZone: "Asia/Dhaka" })
-    );
-
-    const dateTime = dhakaTime.toISOString().slice(0, 16);
+    const dateTime = new Date().toLocaleDateString()
 
     const handleSubmit=(e)=>{
       e.preventDefault()
@@ -62,7 +53,7 @@ const FoodCardDetails = () => {
           <div className='p-10'>
             <h2 className='font-bold text-3xl mb-2'>{foods.title}</h2>
           <Badge className='bg-green-500 mb-2'>Avaiable</Badge>
-            <div className="space-y-4 text-sm">
+            <div className="space-y-2 text-sm ">
               <div className="flex items-center gap-2">
                 <Package className="h-4 w-4" />
                 <span className='text-lg text-black/70'>
@@ -71,7 +62,7 @@ const FoodCardDetails = () => {
               </div>
               <div className="flex items-center gap-2">
                 <Calendar className="h-4 w-4" />
-                <span className='text-lg text-black/70'>Expires: {date}, {time}</span>
+                <span className='text-lg text-black/70'>Expires: {foods.date}</span>
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="h-4 w-4" />
@@ -92,7 +83,7 @@ const FoodCardDetails = () => {
                   <DialogHeader>
                     <DialogTitle>Request Food Data</DialogTitle>
                   </DialogHeader>
-                  <div className='grid grid-cols-1 lg:grid-cols-2 gap-2'>
+                  <div className='grid grid-cols-1 lg:grid-cols-2 gap-2 py-5'>
                   <div className="grid gap-2">
                     <Label htmlFor="text">Food Name</Label>
                     <Input name="title" type="text" placeholder="Enter Food Name" value={foods.title} disabled />
@@ -110,12 +101,12 @@ const FoodCardDetails = () => {
                     <Input name="location" type="text" placeholder="Enter Pickup Location" value={foods.location} disabled />
                   </div>
                   <div className="grid gap-2">
-                    <Label htmlFor="data">Request Date/Time</Label>
-                    <Input name="req_date" type="datetime-local" value={dateTime} disabled />
+                    <Label htmlFor="data">Request Date</Label>
+                    <Input name="req_date" type="datel" value={dateTime} disabled />
                   </div>
                     <div className="grid gap-2">
-                    <Label htmlFor="data">Expired Date/Time</Label>
-                    <Input name="date" type="datetime-local" value={foods.date} disabled />
+                    <Label htmlFor="data">Expired Date</Label>
+                    <Input name="date" type="date" value={foods.date} disabled />
                   </div>
                     <div className="grid gap-2">
                     <Label htmlFor="text">Donner Name</Label>
