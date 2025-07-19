@@ -1,4 +1,7 @@
 import React from 'react';
+import Feature from '../Sections/Feature';
+import Faq from '../Sections/FAQ';
+import Work from '../Sections/Work';
 
 const Home = () => {
     return (
@@ -15,6 +18,11 @@ const Home = () => {
             </div>
 
             {/* featured section */}
+            <Feature></Feature>
+            {/* how it work */}
+            <Work></Work>
+            {/* faq */}
+            <Faq></Faq>
         </div>
     );
 };

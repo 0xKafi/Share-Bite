@@ -10,7 +10,7 @@ const FoodCard = ({foods}) => {
   const time = foods.date.split('T')[1]
   
     return (
-        <div className='relative  lg:w-sm mx-auto hover:shadow-sm rounded-md h-100 border-base-100 border-2'>
+        <div className='relative w-xs mx-auto hover:shadow-sm rounded-md h-100 border-base-100 border-2'>
           <Badge className='absolute bg-green-500 top-1 left-1'>Avaiable</Badge>
           <div className='h-50'>
             <img className='w-full h-full rounded-t-md object-cover' src={foods.image} alt="foodimage" />
