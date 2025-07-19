@@ -17,7 +17,7 @@ const MyFoodRequest = () => {
     const [data, setData] = useState(null)
     
     useEffect(()=>{
-        axios.get(`http://localhost:3000/my-food-request`, {
+        axios.get(`https://sharebite-server-kappa.vercel.app/my-food-request`, {
             headers:{
                 Authorization: `Bearer ${user?.accessToken}`
             }

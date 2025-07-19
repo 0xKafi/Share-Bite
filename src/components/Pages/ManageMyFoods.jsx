@@ -30,7 +30,7 @@ const ManageMyFoods = () => {
     const [data, setData] = useState(null)
 
     useEffect(()=>{
-        axios.get(`http://localhost:3000/manage-my-food`,{
+        axios.get(`https://sharebite-server-kappa.vercel.app/manage-my-food`,{
             headers:{
                 Authorization: `Bearer ${user?.accessToken}`
             }
@@ -44,7 +44,7 @@ const ManageMyFoods = () => {
     }, [user])
 
     const handleDelete=(id)=>{
-        axios.delete(`http://localhost:3000/manage-my-food/${id}`)
+        axios.delete(`https://sharebite-server-kappa.vercel.app/manage-my-food/${id}`)
         .then(() => {
             toast.success("Deleted Successfully")
         })
@@ -60,7 +60,7 @@ const ManageMyFoods = () => {
         const formData = new FormData(form);
         const obj = Object.fromEntries(formData.entries());
 
-        axios.patch(`http://localhost:3000/manage-my-food/${id}`, obj)
+        axios.patch(`https://sharebite-server-kappa.vercel.app/manage-my-food/${id}`, obj)
         .then(res => {
             if(res.data.modifiedCount){
                 toast.success("Data Update Successfully")

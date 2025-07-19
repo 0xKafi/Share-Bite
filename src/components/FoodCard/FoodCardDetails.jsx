@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';import {Button} from "@/components/ui/button"
+import React, { useContext } from 'react';
+import {Button} from "@/components/ui/button"
 import {Package, Calendar, MapPin, User2} from 'lucide-react';
 import { Badge } from "@/components/ui/badge"
 import { useNavigate } from 'react-router';
@@ -36,7 +37,7 @@ const FoodCardDetails = () => {
           "req_time" : e.target.req_date.value
       }
 
-      axios.patch(`http://localhost:3000/foods/details/${foods._id}`, obj)
+      axios.patch(`https://sharebite-server-kappa.vercel.app/foods/details/${foods._id}`, obj)
       .then(res => {
           if(res.data.modifiedCount){
             toast.success("YourFood Request Added")

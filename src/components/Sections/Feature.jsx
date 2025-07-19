@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import FoodCard from '../FoodCard/FoodCard';
 import axios from 'axios';
+import { Link } from 'react-router';
+import {Button} from "@/components/ui/button"
 
 const Feature = () => {
     const [foodsData, setFoodsData] = useState()
 
     useEffect(()=>{
-        axios.get(`http://localhost:3000/feature`)
+        axios.get(`https://sharebite-server-kappa.vercel.app/feature`)
         .then(res => {
             setFoodsData(res.data)
         })
@@ -25,6 +27,9 @@ const Feature = () => {
                 )): ""
             }
         </div>
+        <Link to='/available-foods'>
+        <Button className='mt-5 px-10 block mx-auto'>View All</Button>
+        </Link>
     </div>
     );
 };

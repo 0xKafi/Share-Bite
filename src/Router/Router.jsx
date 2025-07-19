@@ -52,7 +52,7 @@ const router = createBrowserRouter([
           element: <Private>
             <FoodCardDetails></FoodCardDetails>
           </Private>,
-          loader: ({params})=> fetch(`http://localhost:3000/foods/details/${params.id}`)
+          loader: ({params})=> fetch(`https://sharebite-server-kappa.vercel.app/foods/details/${params.id}`)
         },
         {
           path: '/login',

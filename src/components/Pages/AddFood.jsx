@@ -18,7 +18,7 @@ const AddFood = () => {
         dataObj.email = user.email
         dataObj.status = "available"
 
-        axios.post('http://localhost:3000/foods', dataObj)
+        axios.post('https://sharebite-server-kappa.vercel.app/foods', dataObj)
         .then(() => {
           toast.success("Food Added Successfully")
         })
