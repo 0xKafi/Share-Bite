@@ -42,9 +42,16 @@ const AvailableFoods = () => {
 
     return (
         <div className='w-7/8 mx-auto min-h-screen'>
+                <div className='flex lg:hidden h-10 mt-5 items-center border-2 border-orange-400 rounded-md pl-4'>
+                    <input className='outline-none w-full text-black/60' type="text" placeholder='search here' 
+                    onChange={(e)=>{
+                        setSearch(e.target.value)
+                    }}/>
+                    <button className='h-full w-10 bg-orange-400 rounded-r-sm'><Search size={20} color='white' className='mx-auto'></Search></button>   
+                </div>
             <div className='flex justify-end my-5 space-x-3'>
 
-                <div className='flex items-center border-2 border-orange-400 rounded-md pl-4'>
+                <div className='lg:flex hidden items-center border-2 border-orange-400 rounded-md pl-4'>
                     <input className='outline-none text-black/60' type="text" placeholder='search here' 
                     onChange={(e)=>{
                         setSearch(e.target.value)

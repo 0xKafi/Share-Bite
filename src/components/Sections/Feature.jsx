@@ -18,7 +18,7 @@ const Feature = () => {
     }, [])
 
     return (
-    <div className='min-h-screen w-9/12 mx-auto my-10'>
+    <div className='min-h-screen mx-auto my-10'>
         <p className='text-3xl font-semibold my-10'>Featured Task</p>
         <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-6 place-items-center'>
             {

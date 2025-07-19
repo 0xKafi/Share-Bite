@@ -45,15 +45,12 @@ const Navbar = () => {
                     <div>
                         {
                             loading?<>
-                                  <Avatar>
-                                    <AvatarFallback>A</AvatarFallback>
-                                </Avatar>
                             </> :
                             user? 
                             <>
                         <Avatar>
+                            <AvatarFallback>A</AvatarFallback>
                             <AvatarImage src={user.photoURL}/>
-                            <AvatarFallback>ER</AvatarFallback>
                         </Avatar>
                             </>:""
                         }
