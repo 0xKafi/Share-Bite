@@ -23,6 +23,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import toast from 'react-hot-toast';
 
 const ManageMyFoods = () => {
     const {user} = useContext(AuthContext)
@@ -44,11 +45,11 @@ const ManageMyFoods = () => {
 
     const handleDelete=(id)=>{
         axios.delete(`http://localhost:3000/manage-my-food/${id}`)
-        .then(res => {
-            console.log(res.data)
+        .then(() => {
+            toast.success("Deleted Successfully")
         })
         .catch(error => {
-            console.error('Error fetching data:', error);
+            toast.error(error.code)
         });
     }
 
@@ -61,10 +62,12 @@ const ManageMyFoods = () => {
 
         axios.patch(`http://localhost:3000/manage-my-food/${id}`, obj)
         .then(res => {
-            console.log(res.data)
+            if(res.data.modifiedCount){
+                toast.success("Data Update Successfully")
+            }
         })
         .catch(error => {
-            console.error('Error fetching data:', error);
+            toast.error(error.code)
         });
     }
 

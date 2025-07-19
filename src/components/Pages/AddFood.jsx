@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import AuthContext from '../Auth/AuthContext';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const AddFood = () => {
     const {user} = useContext(AuthContext)
@@ -17,13 +18,12 @@ const AddFood = () => {
         dataObj.email = user.email
         dataObj.status = "available"
 
-        console.log(dataObj)
         axios.post('http://localhost:3000/foods', dataObj)
-        .then(res => {
-          console.log(res.data);
+        .then(() => {
+          toast.success("Food Added Successfully")
         })
         .catch(error =>{
-          console.log(error)
+          toast.error(`${error.code}`)
         })
 
         e.target.reset()
@@ -54,7 +54,7 @@ const AddFood = () => {
                   </div>
                     <div className="grid gap-2 mb-4">
                     <Label htmlFor="notes">Additional Notes</Label>
-                    <Textarea name="notes" type="text" required />
+                    <Textarea name="notes" type="text" />
                   </div>
                 <Button className="col-span-2">Submit</Button>
                 </div>

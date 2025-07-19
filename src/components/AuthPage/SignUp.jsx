@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import Lottie from "lottie-react";
 import animation from "../../assets/SignIn.json";
 import { Button } from "@/components/ui/button";
@@ -14,10 +14,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import AuthContext from '../Auth/AuthContext';
+import toast from 'react-hot-toast';
 
 const SignUp = () => {
-  const [message, setMessage] = useState(null)
+    const [message, setMessage] = useState(null)
     const {createUser, updateUserProfile, googleSignIn} = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const handleSignUp=(e)=>{
         e.preventDefault()
@@ -31,7 +33,6 @@ const SignUp = () => {
         const isLongEnough = password.length >= 6;
 
         setMessage(null)
-        console.log(name, image, email, password)
 
         if(!hasUppercase){
             setMessage("add minimum one upppercase letter");
@@ -53,15 +54,21 @@ const SignUp = () => {
         createUser(email, password)
         .then(()=> {
           updateUserProfile(profile)
-          .then(()=> console.log("worked"))
+          .then(()=> {
+            toast.success("🎉 Account created! You’re now signed in.")
+            navigate('/')
+          })
         })
-        .catch((error)=>console.log(error.code))
+        .catch((error)=>toast.error(`${error.code}`))
     }
 
     const handleGoogleSignIn=()=>{
       googleSignIn()
-      .then((result)=>console.log(result.user))
-      .catch((error)=>console.log(error.code))
+      .then(()=>{
+        toast.success("🎉 Account created! You’re now signed in.")
+        navigate('/')
+      })
+      .catch((error)=>toast.error(`${error.code}`))
   }
 
 

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import Lottie from "lottie-react";
 import animation from "../../assets/Login.json";
 import { Button } from "@/components/ui/button";
@@ -14,10 +14,13 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import AuthContext from "../Auth/AuthContext";
+import toast from "react-hot-toast";
 
 
 const Login = () => {
   const {loginUser, googleSignIn} = useContext(AuthContext)
+  const navigate = useNavigate()
+   const location = useLocation()
 
   const handleLogin=(e)=>{
     e.preventDefault()
@@ -25,14 +28,20 @@ const Login = () => {
     const password = e.target.password.value;
 
     loginUser(email, password)
-    .then((result)=> console.log(result.user))
-    .catch((error)=> console.log(error.code))
+    .then(()=> {
+        toast.success("🔓 Logged in successfully. Welcome back!")
+        navigate(`${location.state ? location.state : '/'}`)
+    })
+    .catch((error)=> toast.error(`${error.code}`))
   }
 
   const handleGoogleSignIn=()=>{
     googleSignIn()
-    .then((result)=>console.log(result.user))
-    .catch((error)=>console.log(error.code))
+    .then(()=>{
+        toast.success("🔓 Logged in successfully. Welcome back!")
+        navigate(`${location.state ? location.state : '/'}`)
+    })
+    .catch((error)=>toast.error(`${error.code}`))
   }
 
   return (

@@ -18,13 +18,14 @@ import {
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea";
+import toast from 'react-hot-toast';
 
 
 const FoodCardDetails = () => {
     const {user} = useContext(AuthContext)
     const navigate = useNavigate()
     const foods = useLoaderData();
-    console.log(foods)
+
     const dateTime = new Date().toLocaleDateString()
 
     const handleSubmit=(e)=>{
@@ -34,13 +35,15 @@ const FoodCardDetails = () => {
           "req_email" : user.email,
           "req_time" : e.target.req_date.value
       }
-      console.log(obj)
+
       axios.patch(`http://localhost:3000/foods/details/${foods._id}`, obj)
-      .then(response => {
-          console.log('Resource updated successfully:', response.data);
+      .then(res => {
+          if(res.data.modifiedCount){
+            toast.success("YourFood Request Added")
+          }
       })
       .catch(error => {
-          console.error('Error updating resource:', error);
+          toast.error(error.code);
       });
       navigate('/my-food-request')
     }
