@@ -72,7 +72,7 @@ const ManageMyFoods = () => {
     }
 
     return (
-        <div className='w-7/8 min-h-screen mx-auto mt-10'>
+        <div className='w-9/12 min-h-screen mx-auto mt-10'>
             <Table>
             <TableHeader>
                 <TableRow>

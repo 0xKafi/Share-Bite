@@ -31,7 +31,7 @@ const MyFoodRequest = () => {
     }, [user])
 
     return (
-        <div className='w-7/8 mx-auto mt-10 min-h-screen'>
+        <div className='w-9/12 mx-auto mt-10 min-h-screen'>
             <Table>
             <TableHeader>
                 <TableRow>

@@ -20,8 +20,8 @@ const Navbar = () => {
     }
 
     return (
-        <div className='border border-base-100 mt-5 rounded-xl w-7/8 mx-auto'>
-            <div className='mx-auto lg:p-4 p-5 flex items-center justify-between'>
+        <div className='border border-base-100 mt-5 rounded-xl w-9/12 mx-auto sticky top-5 backdrop-blur-md bg-white/30 z-50'>
+            <div className='mx-auto lg:p-3 p-2 px-3 flex items-center justify-between'>
                 <div>
                     <p className='font-bold text-2xl text-orange-500'>ShareBite</p>
                 </div>

@@ -29,7 +29,7 @@ const AddFood = () => {
         e.target.reset()
     }
     return (
-        <div className='w-7/8 mx-auto h-screen flex justify-center items-center'>
+        <div className='w-9/12 mx-auto h-screen flex justify-center items-center'>
             <form onSubmit={handleSubmit} className='lg:w-2/3 lg:mx-aut'>
                 <div className='max-w-lg p-5 shadow rounded-lg mx-auto'>
                   <div className="grid gap-2 mb-4">

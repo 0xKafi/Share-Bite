@@ -41,35 +41,37 @@ const AvailableFoods = () => {
   }
 
     return (
-        <div className='w-7/8 mx-auto min-h-screen'>
-                <div className='flex lg:hidden h-10 mt-5 items-center border-2 border-orange-400 rounded-md pl-4'>
-                    <input className='outline-none w-full text-black/60' type="text" placeholder='search here' 
+        <div className='w-9/12 mx-auto min-h-screen'>
+                <div className='flex lg:hidden h-10 mt-5 items-center border border-orange-400 rounded-md pl-4'>
+                    <input className='outline-none w-full text-black/60' type="text" placeholder='Search here' 
                     onChange={(e)=>{
                         setSearch(e.target.value)
                     }}/>
-                    <button className='h-full w-10 bg-orange-400 rounded-r-sm'><Search size={20} color='white' className='mx-auto'></Search></button>   
+                    <button className='h-full w-12 bg-orange-400 rounded-r-sm'><Search size={20} color='white' className='mx-auto'></Search></button>   
                 </div>
             <div className='flex justify-end my-5 space-x-3'>
-
-                <div className='lg:flex hidden items-center border-2 border-orange-400 rounded-md pl-4'>
+                <div className='lg:flex hidden items-center border border-orange-400 rounded-md pl-4'>
                     <input className='outline-none text-black/60' type="text" placeholder='search here' 
                     onChange={(e)=>{
                         setSearch(e.target.value)
                     }}/>
                     <button className='h-full w-10 bg-orange-400 rounded-r-sm'><Search size={20} color='white' className='mx-auto'></Search></button>   
                 </div>
+
                 <div>
-                    <Button onClick={handleSort}>sort by expire date</Button>
+                    <Button onClick={handleSort}>Sort by expire date</Button>
                 </div>
-                <div className='flex bg-gray-300 rounded-sm space-x-2 border-2 border-gray-300'>
-                    <div className={`${col? '': 'bg-white rounded-sm'} p-1`}>
-                        <Grid2x2 color='orange' onClick={()=> setCol(false)}  />
+
+                <div className='flex rounded-sm space-x-1 border-2'>
+                    <div className={`${col? '': 'bg-orange-500 rounded-l-sm'} p-1`}>
+                        <Grid2x2 color={`${col? 'orange': 'white'}`} onClick={()=> setCol(false)}  />
                     </div>
-                    <div className={`${col? 'bg-white rounded-sm': ''} p-1 `}>
-                        <Grid3x3 color='orange' onClick={()=> setCol(true)}  />
+                    <div className={`${col? 'bg-orange-500 rounded-r-sm': ''} p-1 `}>
+                        <Grid3x3 color={`${col? 'white': 'orange'}`} onClick={()=> setCol(true)}  />
                     </div>
                 </div>
             </div>
+
             <div className={`grid ${col? "lg:grid-cols-3" : "lg:grid-cols-2"} grid-cols-1 gap-10`}>
                 {
                     newData?.filter(food => {
