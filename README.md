@@ -1,12 +1,27 @@
-# React + Vite
+# 🍽️ ShareBite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**ShareBite** is a community-driven platform where users can **share their extra food** and **request meals** when in need. Built with love using modern frontend technologies and powered by Firebase, ShareBite aims to reduce food waste and help those in need with just a few clicks.
 
-Currently, two official plugins are available:
+## Live Link: 
+👉 [Visit ShareBite](https://precious-medovik-10e33c.netlify.app/)
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌟 Features
 
-## Expanding the ESLint configuration
+- 🔁 **Food Sharing System**: Users can post and share available food for others in the community.
+- 🙋 **Request Food**: Anyone can request available food posted by other users.
+- 🔐 **Firebase Authentication**: Secure login system using Firebase for both donors and recipients.
+- 🔍 **Search & Filter**: Easily search food posts by date or keywords.
+- ⚡ **Real-time Updates**: Stay updated with new posts and requests using Firebase's real-time capabilities and React Query.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠 Tech Stack
+
+- **React 19** – Modern frontend framework for building UI
+- **Vite** – Fast and lightweight development server
+- **Firebase** – Authentication, Firestore database, and hosting
+- **Tailwind CSS** – Utility-first CSS framework for styling
+- **ShadCN UI + Lucide** – Accessible UI primitives and icons
+- **React Query** – Data fetching and caching
+- **Framer Motion** – Smooth and elegant animations
