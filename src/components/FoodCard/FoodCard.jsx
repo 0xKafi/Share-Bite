@@ -7,10 +7,9 @@ import { useNavigate } from 'react-router';
 const FoodCard = ({foods}) => {
   const navigate = useNavigate()
   const date = foods.date.split('T')[0]
-  const time = foods.date.split('T')[1]
   
     return (
-        <div className='relative w-xs mx-auto hover:shadow-sm rounded-md h-100 border-base-100 border-2'>
+        <div className='relative w-[260px] hover:shadow-sm rounded-md h-auto border-base-100 border-2'>
           <Badge className='absolute bg-green-500 top-1 left-1'>Avaiable</Badge>
           <div className='h-50'>
             <img className='w-full h-full rounded-t-md object-cover' src={foods.image} alt="foodimage" />
@@ -26,7 +25,7 @@ const FoodCard = ({foods}) => {
               </div>
               <div className="flex items-center gap-1">
                 <Calendar className="h-4 w-4" />
-                <span>Expires: {date}, {time}</span>
+                <span>Expires: {date}</span>
               </div>
               <div className="flex items-center gap-1">
                 <MapPin className="h-4 w-4" />

@@ -41,7 +41,7 @@ const AvailableFoods = () => {
   }
 
     return (
-        <div className='w-9/12 mx-auto min-h-screen'>
+        <div className='w-11/12 lg:max-w-screen-xl mx-auto min-h-screen'>
                 <div className='flex lg:hidden h-10 mt-5 items-center border border-orange-400 rounded-md pl-4'>
                     <input className='outline-none w-full text-black/60' type="text" placeholder='Search here' 
                     onChange={(e)=>{
@@ -62,7 +62,7 @@ const AvailableFoods = () => {
                     <Button onClick={handleSort}>Sort by expire date</Button>
                 </div>
 
-                <div className='flex rounded-sm space-x-1 border-2'>
+                <div className='lg:flex rounded-sm space-x-1 border-2 hidden'>
                     <div className={`${col? '': 'bg-orange-500 rounded-l-sm'} p-1`}>
                         <Grid2x2 color={`${col? 'orange': 'white'}`} onClick={()=> setCol(false)}  />
                     </div>
@@ -72,7 +72,7 @@ const AvailableFoods = () => {
                 </div>
             </div>
 
-            <div className={`grid ${col? "lg:grid-cols-3" : "lg:grid-cols-2"} grid-cols-1 gap-10`}>
+            <div className={`grid ${col? "lg:grid-cols-4" : "lg:grid-cols-3"} grid-cols-1 gap-10`}>
                 {
                     newData?.filter(food => {
                         return search.toLowerCase() === ' ' ? food : food.title.toLowerCase().includes(search.toLowerCase())

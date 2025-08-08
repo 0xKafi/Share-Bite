@@ -24,8 +24,8 @@ const Work = () => {
   ];
 
   return (
-        <div className="my-30">
-            <h2 data-aos="fade-up" data-aos-duration="1000" className="text-3xl font-bold text-center my-20">How It Work</h2>
+        <div className="mb-24">
+            <h2 data-aos="fade-up" data-aos-duration="1000" className="text-3xl font-bold text-center mb-24">How It Work</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto my-10 px-4">
             {
                 steps.map((step) => (

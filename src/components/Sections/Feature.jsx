@@ -18,9 +18,9 @@ const Feature = () => {
     }, [])
 
     return (
-    <div className='min-h-screen mx-auto my-10'>
-        <p className='text-3xl font-semibold my-10'>Featured Task</p>
-        <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-6 place-items-center'>
+    <div className='min-h-screen mb-24'>
+        <p className='text-3xl font-semibold mb-10'>Featured Task</p>
+        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 place-items-center'>
             {
                 foodsData? foodsData.map(foods =>(
                     <FoodCard key={foods._id} foods={foods}></FoodCard>
@@ -28,7 +28,7 @@ const Feature = () => {
             }
         </div>
         <Link to='/available-foods'>
-        <Button className='mt-5 px-10 block mx-auto'>View All</Button>
+        <Button className='mt-10 px-10 block mx-auto'>View All</Button>
         </Link>
     </div>
     );
