@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => {
   return (
     <footer className="bg-black text-neutral-100 mt-20 py-12 px-6 lg:px-20">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <div className="max-w-screen-xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         <div>
           <div className="flex items-center gap-2 mb-4">
             <p className="text-xl font-semibold">ShareBite</p>

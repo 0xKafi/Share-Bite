@@ -9,7 +9,7 @@ const FoodCard = ({foods}) => {
   const date = foods.date.split('T')[0]
   
     return (
-        <div className='relative w-[260px] hover:shadow-sm rounded-md h-auto border-base-100 border-2'>
+        <div className='relative w-full hover:shadow-sm rounded-md h-auto border-base-100 border-2'>
           <Badge className='absolute bg-green-500 top-1 left-1'>Avaiable</Badge>
           <div className='h-50'>
             <img className='w-full h-full rounded-t-md object-cover' src={foods.image} alt="foodimage" />

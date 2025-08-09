@@ -5,7 +5,7 @@ import Work from '../Sections/Work';
 
 const Home = () => {
     return (
-        <div className='max-w-screen-xl mx-auto'>
+        <div className='w-11/12 lg:max-w-screen-xl mx-auto'>
             <div className='flex flex-col lg:flex-row lg:justify-between items-center my-16'>
                 <div>
                     <h1 className='font-bold text-6xl mb-2 lg:leading-17'>Food Tastes Better<br /> <span className='text-orange-500'>When Shared.</span></h1>

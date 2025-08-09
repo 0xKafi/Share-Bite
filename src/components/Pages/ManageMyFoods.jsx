@@ -24,6 +24,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import toast from 'react-hot-toast';
+import { Skeleton } from "@/components/ui/skeleton"
 
 const ManageMyFoods = () => {
     const {user} = useContext(AuthContext)
@@ -72,7 +73,7 @@ const ManageMyFoods = () => {
     }
 
     return (
-        <div className='w-9/12 min-h-screen mx-auto mt-10'>
+        <div className='w-11/12 lg:max-w-screen-xl mx-auto mt-10'>
             <Table>
             <TableHeader>
                 <TableRow>
@@ -80,19 +81,29 @@ const ManageMyFoods = () => {
                 <TableHead >Quantity</TableHead>
                 <TableHead >Expire Date</TableHead>
                 <TableHead >Status</TableHead>
-                <TableHead ></TableHead>
+                <TableHead className='text-right'>Action</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
                 {
-                    data?.map(data=>
+                    data === null?
+                    Array.from({ length: 5 }).map(() => (
+                        <TableRow className='py-50'>
+                            <TableCell><div className="h-6 bg-gray-300 rounded w-3/4"></div></TableCell>
+                            <TableCell><div className="h-6 bg-gray-300 rounded w-3/4"></div></TableCell>
+                            <TableCell><div className="h-6 bg-gray-300 rounded w-3/4"></div></TableCell>
+                            <TableCell><div className="h-6 bg-gray-300 rounded w-3/4"></div></TableCell>
+                            <TableCell><div className="h-6 bg-gray-300 rounded w-3/4"></div></TableCell>
+                        </TableRow>
+                        )):
+                    data.map(data=>
                         <>
                             <TableRow>
                             <TableCell>{data.title}</TableCell>
                             <TableCell>{data.quantity}</TableCell>
                             <TableCell>{data.date}</TableCell>
                             <TableCell>{data.status}</TableCell>
-                            <TableCell className='flex space-x-2'>
+                            <TableCell className='flex space-x-2 justify-end'> 
                               <div className='hover:bg-gray-900 hover:text-white p-2 w-8 rounded-sm'>
                             <Dialog>
                                 <DialogTrigger asChild>

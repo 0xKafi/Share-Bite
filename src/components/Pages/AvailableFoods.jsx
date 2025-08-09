@@ -3,10 +3,9 @@ import FoodCard from '../FoodCard/FoodCard';
 import { Grid2x2, Grid3x3, Search } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import Lottie from 'lottie-react';
-import animation from '../../assets/loading.json'
 import { Button } from "@/components/ui/button";
 import toast from 'react-hot-toast';
+import { Skeleton } from "@/components/ui/skeleton"
 
 const AvailableFoods = () => {
     const [col, setCol] = useState(true)
@@ -29,9 +28,6 @@ const AvailableFoods = () => {
 }, [data])
 
 
-  if (isLoading) return <div className='h-screen mt-2 grid place-items-center'>
-             <Lottie animationData={animation} className="max-w-lg w-full" />
-        </div>;
   if (error) return <p className='text-center h-screen'>Error loading foods data</p>;
   
   const handleSort=()=>{
@@ -74,6 +70,17 @@ const AvailableFoods = () => {
 
             <div className={`grid ${col? "lg:grid-cols-4" : "lg:grid-cols-3"} grid-cols-1 gap-10`}>
                 {
+                    isLoading ? 
+                      Array.from({ length: (col ? 4 : 3) * 2 }).map(() => (
+                        <div className="flex flex-col space-y-8">
+                        <Skeleton className="h-[263px] w-[290px] rounded-xl" />
+                        <div className="space-y-2">
+                            <Skeleton className="h-6 w-[250px]" />
+                            <Skeleton className="h-8 w-[200px]" />
+                            <Skeleton className="h-6 w-[180px]" />
+                        </div>
+                        </div>  
+                        )) :
                     newData?.filter(food => {
                         return search.toLowerCase() === ' ' ? food : food.title.toLowerCase().includes(search.toLowerCase())
                     })

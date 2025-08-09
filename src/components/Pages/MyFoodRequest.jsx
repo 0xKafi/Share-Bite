@@ -31,25 +31,35 @@ const MyFoodRequest = () => {
     }, [user])
 
     return (
-        <div className='w-9/12 mx-auto mt-10 min-h-screen'>
+        <div className='w-11/12 lg:max-w-screen-xl mx-auto mt-10'>
             <Table>
             <TableHeader>
                 <TableRow>
                 <TableHead >Donner Name</TableHead>
                 <TableHead >Pickup Location</TableHead>
                 <TableHead >Expire Date</TableHead>
-                <TableHead >Request Date</TableHead>
+                <TableHead className='text-right'>Request Date</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
                 {
+                    data === null?
+                    Array.from({ length: 5 }).map(() => (
+                        <TableRow className='py-50'>
+                            <TableCell><div className="h-6 bg-gray-300 rounded w-3/4"></div></TableCell>
+                            <TableCell><div className="h-6 bg-gray-300 rounded w-3/4"></div></TableCell>
+                            <TableCell><div className="h-6 bg-gray-300 rounded w-3/4"></div></TableCell>
+                            <TableCell><div className="h-6 bg-gray-300 rounded w-3/4"></div></TableCell>
+                            <TableCell><div className="h-6 bg-gray-300 rounded w-3/4"></div></TableCell>
+                        </TableRow>
+                        )):
                     data?.map(data=>
                         <>
                             <TableRow>
                             <TableCell>{data.name}</TableCell>
                             <TableCell>{data.location}</TableCell>
                             <TableCell>{data.date}</TableCell>
-                            <TableCell>{data.req_time}</TableCell>
+                            <TableCell className='text-right'>{data.req_time}</TableCell>
                             </TableRow>
                         </>
                     )
