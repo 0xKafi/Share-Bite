@@ -37,7 +37,7 @@ const AvailableFoods = () => {
   }
 
     return (
-        <div className='w-11/12 lg:max-w-screen-xl mx-auto min-h-screen'>
+        <div className='w-11/12 lg:max-w-screen-xl mx-auto mb-24'>
                 <div className='flex lg:hidden h-10 mt-5 items-center border border-orange-400 rounded-md pl-4'>
                     <input className='outline-none w-full text-black/60' type="text" placeholder='Search here' 
                     onChange={(e)=>{
@@ -45,17 +45,17 @@ const AvailableFoods = () => {
                     }}/>
                     <button className='h-full w-12 bg-orange-400 rounded-r-sm'><Search size={20} color='white' className='mx-auto'></Search></button>   
                 </div>
-            <div className='flex justify-end my-5 space-x-3'>
-                <div className='lg:flex hidden items-center border border-orange-400 rounded-md pl-4'>
-                    <input className='outline-none text-black/60' type="text" placeholder='search here' 
+            <div className='flex justify-between my-5 space-x-3'>
+                <div className='lg:flex w-80 hidden items-center border border-orange-400 rounded-md pl-4'>
+                    <input className='outline-none w-70 text-black/60' type="text" placeholder='search here' 
                     onChange={(e)=>{
                         setSearch(e.target.value)
                     }}/>
                     <button className='h-full w-10 bg-orange-400 rounded-r-sm'><Search size={20} color='white' className='mx-auto'></Search></button>   
                 </div>
-
+                <div className='flex space-x-5'>
                 <div>
-                    <Button onClick={handleSort}>Sort by expire date</Button>
+                    <Button variant="outline" onClick={handleSort}>Sort by - Expire Date</Button>
                 </div>
 
                 <div className='lg:flex rounded-sm space-x-1 border-2 hidden'>
@@ -67,7 +67,7 @@ const AvailableFoods = () => {
                     </div>
                 </div>
             </div>
-
+        </div>
             <div className={`grid ${col? "lg:grid-cols-4" : "lg:grid-cols-3"} grid-cols-1 gap-10`}>
                 {
                     isLoading ? 

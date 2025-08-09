@@ -45,7 +45,7 @@ const Login = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4">
+    <div className="flex items-center justify-center px-4">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl w-full">
         {/* Lottie Animation */}
         <div className="flex items-center justify-center">
@@ -68,14 +68,14 @@ const Login = () => {
                     <Label htmlFor="email">Email</Label>
                     <Input
                       id="email"
-                      type="email"
+                      type="email" defaultValue='leo@foster.com'
                       placeholder="mail@example.com"
                       required
                     />
                   </div>
                   <div className="grid gap-2 mb-4">
                     <Label htmlFor="password">Password</Label>
-                    <Input id="password" name="password" type="password" required />
+                    <Input id="password" defaultValue='123456Aa' name="password" type="password" required />
                   </div>
                 </div>
                 <Button type="submit" className="w-full">

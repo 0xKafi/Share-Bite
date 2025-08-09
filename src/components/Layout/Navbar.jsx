@@ -29,6 +29,7 @@ const Navbar = () => {
                 <div className='space-x-8 hidden lg:block'>
                     <NavLink className={({isActive})=> isActive ? "font-medium text-orange-500": ""} to='/'>Home</NavLink>
                     <NavLink className={({isActive})=> isActive ? "font-medium text-orange-500": ""} to='/available-foods'>Available Foods</NavLink>
+                    <NavLink className={({isActive})=> isActive ? "font-medium text-orange-500": ""} to="/blog">Blog</NavLink>
                     {
                         user? 
                     <>
@@ -62,6 +63,7 @@ const Navbar = () => {
                         <DropdownMenuContent>
                             <DropdownMenuItem><NavLink className={({isActive})=> isActive ? "font-medium text-orange-500": ""} to="/">Home</NavLink></DropdownMenuItem>
                             <DropdownMenuItem><NavLink className={({isActive})=> isActive ? "font-medium text-orange-500": ""} to="/available-foods">Available Foods</NavLink></DropdownMenuItem>
+                            <DropdownMenuItem><NavLink className={({isActive})=> isActive ? "font-medium text-orange-500": ""} to="/blog">Blog</NavLink></DropdownMenuItem>
                             <>
                             <DropdownMenuItem><NavLink className={({isActive})=> isActive ? "font-medium text-orange-500": ""} to="/add-food">Add Food</NavLink></DropdownMenuItem>
                             <DropdownMenuItem><NavLink className={({isActive})=> isActive ? "font-medium text-orange-500": ""} to="/manage-my-foods">Manage My Food</NavLink></DropdownMenuItem>

@@ -73,7 +73,7 @@ const ManageMyFoods = () => {
     }
 
     return (
-        <div className='w-11/12 lg:max-w-screen-xl mx-auto mt-10'>
+        <div className='w-11/12 mb-24 lg:max-w-screen-xl mx-auto mt-10'>
             <Table>
             <TableHeader>
                 <TableRow>

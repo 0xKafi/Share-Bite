@@ -13,6 +13,7 @@ import FoodCardDetails from '../components/FoodCard/FoodCardDetails';
 import MyFoodRequest from '../components/Pages/MyFoodRequest';
 import Private from '../components/AuthPage/Private';
 import Error from '../components/Layout/Error';
+import Blog from '../components/Pages/Blog';
 
 const router = createBrowserRouter([
   {
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
         {
           path: '/signup',
           Component: SignUp
+        },
+                {
+          path: '/blog',
+          Component: Blog
         }
     ]
   },
